@@ -131,11 +131,11 @@
 			children = (
 				BB81EECA2C24C6FB0080BEF3 /* CercacorAssignmentApp.swift */,
 				BB81EECC2C24C6FB0080BEF3 /* ContentView.swift */,
-				BB5552CA2C24CB02007815A1 /* Network */,
-				BB5552C92C24CAF2007815A1 /* Extensions */,
-				BB5552C82C24CAE8007815A1 /* ViewModel */,
 				BB5552C52C24CAB3007815A1 /* Model */,
 				BB5552C72C24CAD4007815A1 /* View */,
+				BB5552C82C24CAE8007815A1 /* ViewModel */,
+				BB5552C92C24CAF2007815A1 /* Extensions */,
+				BB5552CA2C24CB02007815A1 /* Network */,
 				BB81EECE2C24C6FD0080BEF3 /* Assets.xcassets */,
 				BB81EED02C24C6FD0080BEF3 /* Preview Content */,
 			);
