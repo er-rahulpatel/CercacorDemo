@@ -32,7 +32,7 @@ struct NutritionDetailView: View {
                 ThickDivider()
                 
                 ///Displays total calories
-                TotalCaloryView(calory: foodItemDetailViewModel.calculateNutrientAmount(
+                CalorieView(calories: foodItemDetailViewModel.calculateNutrientAmount(
                     for: food.calories,
                     servingQuantity: foodItemDetailViewModel.quantity,
                     defaultQuantity: food.servingQuantity))

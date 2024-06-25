@@ -39,6 +39,7 @@
 		BB65CEB72C2B19A90070BC58 /* SearchInstantEndPointResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65CEB62C2B19A90070BC58 /* SearchInstantEndPointResponseTests.swift */; };
 		BB65CEB92C2B1C480070BC58 /* APIEndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65CEB82C2B1C480070BC58 /* APIEndPointTests.swift */; };
 		BB65CEBB2C2B1DDA0070BC58 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65CEBA2C2B1DDA0070BC58 /* NetworkErrorTests.swift */; };
+		BB65CEBE2C2B37E10070BC58 /* CalorieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB65CEBD2C2B37E10070BC58 /* CalorieView.swift */; };
 		BB81EECB2C24C6FB0080BEF3 /* CercacorAssignmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB81EECA2C24C6FB0080BEF3 /* CercacorAssignmentApp.swift */; };
 		BB81EECF2C24C6FD0080BEF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB81EECE2C24C6FD0080BEF3 /* Assets.xcassets */; };
 		BB81EED22C24C6FD0080BEF3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB81EED12C24C6FD0080BEF3 /* Preview Assets.xcassets */; };
@@ -47,7 +48,6 @@
 		BBC48CAB2C2A7AF900D40014 /* FoodDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC48CAA2C2A7AF900D40014 /* FoodDetailHeader.swift */; };
 		BBC48CAD2C2A7D9F00D40014 /* NutritionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC48CAC2C2A7D9F00D40014 /* NutritionDetailView.swift */; };
 		BBC48CAF2C2A8EF000D40014 /* QuantityInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC48CAE2C2A8EF000D40014 /* QuantityInputView.swift */; };
-		BBC48CB32C2A93ED00D40014 /* TotalCaloryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC48CB22C2A93ED00D40014 /* TotalCaloryView.swift */; };
 		BBC48CB52C2A95D400D40014 /* NutrientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC48CB42C2A95D400D40014 /* NutrientList.swift */; };
 		BBC48CB72C2AB27A00D40014 /* NumberFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC48CB62C2AB27A00D40014 /* NumberFormatter+Extension.swift */; };
 		BBC48CB92C2AC15700D40014 /* FoodItemListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC48CB82C2AC15700D40014 /* FoodItemListViewModelTests.swift */; };
@@ -109,6 +109,7 @@
 		BB65CEB62C2B19A90070BC58 /* SearchInstantEndPointResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInstantEndPointResponseTests.swift; sourceTree = "<group>"; };
 		BB65CEB82C2B1C480070BC58 /* APIEndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPointTests.swift; sourceTree = "<group>"; };
 		BB65CEBA2C2B1DDA0070BC58 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
+		BB65CEBD2C2B37E10070BC58 /* CalorieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieView.swift; sourceTree = "<group>"; };
 		BB81EEC72C24C6FB0080BEF3 /* CercacorAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CercacorAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB81EECA2C24C6FB0080BEF3 /* CercacorAssignmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CercacorAssignmentApp.swift; sourceTree = "<group>"; };
 		BB81EECE2C24C6FD0080BEF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		BBC48CAA2C2A7AF900D40014 /* FoodDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailHeader.swift; sourceTree = "<group>"; };
 		BBC48CAC2C2A7D9F00D40014 /* NutritionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionDetailView.swift; sourceTree = "<group>"; };
 		BBC48CAE2C2A8EF000D40014 /* QuantityInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityInputView.swift; sourceTree = "<group>"; };
-		BBC48CB22C2A93ED00D40014 /* TotalCaloryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCaloryView.swift; sourceTree = "<group>"; };
 		BBC48CB42C2A95D400D40014 /* NutrientList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientList.swift; sourceTree = "<group>"; };
 		BBC48CB62C2AB27A00D40014 /* NumberFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extension.swift"; sourceTree = "<group>"; };
 		BBC48CB82C2AC15700D40014 /* FoodItemListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemListViewModelTests.swift; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 				BBC48CAA2C2A7AF900D40014 /* FoodDetailHeader.swift */,
 				BBC48CAC2C2A7D9F00D40014 /* NutritionDetailView.swift */,
 				BBC48CAE2C2A8EF000D40014 /* QuantityInputView.swift */,
-				BBC48CB22C2A93ED00D40014 /* TotalCaloryView.swift */,
+				BB65CEBD2C2B37E10070BC58 /* CalorieView.swift */,
 				BBC48CB42C2A95D400D40014 /* NutrientList.swift */,
 			);
 			path = Components;
@@ -505,7 +505,6 @@
 				BB5B7A512C27C331004B2975 /* View+Extension.swift in Sources */,
 				BB5552F42C255D02007815A1 /* FoodItemList.swift in Sources */,
 				BBC48CAB2C2A7AF900D40014 /* FoodDetailHeader.swift in Sources */,
-				BBC48CB32C2A93ED00D40014 /* TotalCaloryView.swift in Sources */,
 				BBC48CB72C2AB27A00D40014 /* NumberFormatter+Extension.swift in Sources */,
 				BB5552D82C24EAF7007815A1 /* NetworkError.swift in Sources */,
 				BB5B7A4B2C2752D7004B2975 /* Food.swift in Sources */,
@@ -519,6 +518,7 @@
 				BB5552F62C2561D1007815A1 /* FoodItemRow.swift in Sources */,
 				BB81EECB2C24C6FB0080BEF3 /* CercacorAssignmentApp.swift in Sources */,
 				BB55530B2C2604C6007815A1 /* PreviewInitial.swift in Sources */,
+				BB65CEBE2C2B37E10070BC58 /* CalorieView.swift in Sources */,
 				BB5552E72C252106007815A1 /* FoodItemListView.swift in Sources */,
 				BB5B7A4F2C276343004B2975 /* SearchItemEndPointResponse.swift in Sources */,
 				BB5552EF2C255175007815A1 /* SearchInstantEndPointResponse.swift in Sources */,

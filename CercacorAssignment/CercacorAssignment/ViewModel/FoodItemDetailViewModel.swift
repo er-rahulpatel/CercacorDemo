@@ -91,7 +91,7 @@ class FoodItemDetailViewModel: ObservableObject {
         quantity = value
     }
     
-    /// Calculate calory and nutrient amount when serving size is changed.
+    /// Calculate calories and nutrient amount when serving size is changed.
     /// Formula ref: https://docx.syndigo.com/developers/docs/natural-language-for-nutrients#:~:text=Important%20note%20about%20serving%20sizes%3A
     func calculateNutrientAmount(for amount: Double, servingQuantity: Double, defaultQuantity: Double ) -> Double {
         (servingQuantity/defaultQuantity) * amount

@@ -50,7 +50,7 @@ class FoodItemListViewModel: ObservableObject {
         self.nutritionixAPIManager = nutritionixAPIManager
     }
     /// Fetch Instant Food Item response
-    /// Excluding common food items because it does not contain calory information and has different end point to fetch detail information
+    /// Excluding common food items because it does not contain calorie information and has different end point to fetch detail information
     func searchInstantFoodItem(for foodItem: String, includeCommonFoodItem: Bool = false ) {
         Task {
             do {

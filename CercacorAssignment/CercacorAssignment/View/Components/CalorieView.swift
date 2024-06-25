@@ -1,14 +1,14 @@
 //
-//  TotalCaloryView.swift
+//  CalorieView.swift
 //  CercacorAssignment
 //
-//  Created by Applanding Solutions on 2024-06-24.
+//  Created by Applanding Solutions on 2024-06-25.
 //
 
 import SwiftUI
 
-struct TotalCaloryView: View {
-    let calory: Double
+struct CalorieView: View {
+    let calories: Double
     
     var body: some View {
         
@@ -21,15 +21,15 @@ struct TotalCaloryView: View {
                 .bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text(calory.format())
+            Text(calories.format())
                 .bold()
         }
         .font(.title3)
     }
 }
 
-struct TotalCaloryView_Previews: PreviewProvider {
+struct CalorieView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalCaloryView(calory: 50)
+        CalorieView(calories: 50)
     }
 }
