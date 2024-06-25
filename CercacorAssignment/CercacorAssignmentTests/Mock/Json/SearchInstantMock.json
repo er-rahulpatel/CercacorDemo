@@ -1,0 +1,330 @@
+{
+    "branded": [
+        {
+            "nf_calories": 340,
+            "brand_name_item_name": "Milo's Hamburgers Hamburger",
+            "food_name": "Hamburger",
+            "serving_unit": "sandwich",
+            "brand_name": "Milo's Hamburgers",
+            "brand_type": 1,
+            "region": 1,
+            "nix_item_id": "c6405291f1393db78caf5a7e",
+            "serving_qty": 1,
+            "nix_brand_id": "58c05bd9fc977da756c7a4fc",
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 100,
+            "brand_name_item_name": "Great Value Hamburger Buns, Enriched",
+            "food_name": "Hamburger Buns, Enriched",
+            "serving_unit": "bun",
+            "brand_name": "Great Value",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "51c54cc997c3e6efadd61910",
+            "photo": {
+                "thumb": "https://nutritionix-api.s3.amazonaws.com/536020b12ae36a5775c0a4da.jpeg"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37b1176fe9790a898466",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 50,
+            "brand_name_item_name": "Aunt Millie's Buns, Hamburger",
+            "food_name": "Buns, Hamburger",
+            "serving_unit": "bun",
+            "brand_name": "Aunt Millie's",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "608969fb6c0df17d6a2a9dde",
+            "photo": {
+                "thumb": "https://assets.syndigo.com/c188372a-5299-462f-b0fd-51c6706a4900"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37b9176fe9790a898bde",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 150,
+            "brand_name_item_name": "Wonder Hamburger Buns, Classic",
+            "food_name": "Hamburger Buns, Classic",
+            "serving_unit": "bun",
+            "brand_name": "Wonder",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "5ae2cca74f2975c172521eb9",
+            "photo": {
+                "thumb": "https://assets.syndigo.com/bd6a97db-18ca-4062-ba2a-d62eafb441fc"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37c6176fe9790a899445",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 50,
+            "brand_name_item_name": "Keto Culture Baking Hamburger Buns",
+            "food_name": "Hamburger Buns",
+            "serving_unit": "bun",
+            "brand_name": "Keto Culture Baking",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "5f806e26ddd067d867c159a0",
+            "photo": {
+                "thumb": "https://nutritionix-api.s3.amazonaws.com/664dd19c1e6aa400065fddd6.jpeg"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "5ef9955820fa63e77b3827ef",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 150,
+            "brand_name_item_name": "Pepperidge Farm Hamburger Buns, Sesame",
+            "food_name": "Hamburger Buns, Sesame",
+            "serving_unit": "bun",
+            "brand_name": "Pepperidge Farm",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "51d2fa7ecc9bff111580d5f9",
+            "photo": {
+                "thumb": "https://assets.syndigo.com/c3c5ea04-97dd-4528-98da-8d8f9a2e69f2"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37b2176fe9790a89857c",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 170,
+            "brand_name_item_name": "Nature's Own Hamburger Buns, Brioche Style",
+            "food_name": "Hamburger Buns, Brioche Style",
+            "serving_unit": "bun",
+            "brand_name": "Nature's Own",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "5eb508297979d82e736cbd88",
+            "photo": {
+                "thumb": "https://assets.syndigo.com/0528f135-f7d5-4d01-8212-1337ea3effde"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37b9176fe9790a898bf4",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 120,
+            "brand_name_item_name": "Kroger Hamburger Buns, Enriched, White",
+            "food_name": "Hamburger Buns, Enriched, White",
+            "serving_unit": "bun",
+            "brand_name": "Kroger",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "634e879fb12c290008618809",
+            "photo": {
+                "thumb": "https://assets.syndigo.com/3bbfd026-c983-4bb8-b4ce-b65b98a6c077"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37b9176fe9790a898bdd",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 110,
+            "brand_name_item_name": "Old Home Hamburger Buns, Hamburger, Sliced",
+            "food_name": "Hamburger Buns, Hamburger, Sliced",
+            "serving_unit": "bun",
+            "brand_name": "Old Home",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "51c3b77697c3e6d8d3b44ab4",
+            "serving_qty": 1,
+            "nix_brand_id": "51db37bc176fe9790a898e34",
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 140,
+            "brand_name_item_name": "Pepperidge Farm Hamburger Buns, Soft White",
+            "food_name": "Hamburger Buns, Soft White",
+            "serving_unit": "bun",
+            "brand_name": "Pepperidge Farm",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "51d2fa7ecc9bff111580d604",
+            "photo": {
+                "thumb": "https://assets.syndigo.com/62ddbf57-39a4-4bbf-bcc9-db01e716484f"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37b2176fe9790a89857c",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 50,
+            "brand_name_item_name": "Franz Keto Hamburger Buns",
+            "food_name": "Keto Hamburger Buns",
+            "serving_unit": "bun",
+            "brand_name": "Franz",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "5ead1cef56cdcf657a1c4f49",
+            "photo": {
+                "thumb": "https://nutritionix-api.s3.amazonaws.com/630dee598db9160006cee155.jpeg"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37b9176fe9790a898bed",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 50,
+            "brand_name_item_name": "Sam's Choice Keto Friendly Hamburger Buns",
+            "food_name": "Keto Friendly Hamburger Buns",
+            "serving_unit": "bun",
+            "brand_name": "Sam's Choice",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "629df8f3dcb0f60009b64444",
+            "photo": {
+                "thumb": "https://nutritionix-api.s3.amazonaws.com/629df8f4dcb0f60009b64445.jpeg"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37ca176fe9790a8997de",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 140,
+            "brand_name_item_name": "Nature's Own Hamburger Buns, Butter",
+            "food_name": "Hamburger Buns, Butter",
+            "serving_unit": "bun",
+            "brand_name": "Nature's Own",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "51d379eacc9bff5553aa9c70",
+            "photo": {
+                "thumb": "https://assets.syndigo.com/420afac6-1087-43c8-8dbb-6e851a357d8c"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37b9176fe9790a898bf4",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 5,
+            "brand_name_item_name": "Great Value Hamburger Dill Chips",
+            "food_name": "Hamburger Dill Chips",
+            "serving_unit": "chips",
+            "brand_name": "Great Value",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "597ae293252f901346dda68e",
+            "photo": {
+                "thumb": "https://nutritionix-api.s3.amazonaws.com/66585df4b13bd100092b7825.jpeg"
+            },
+            "serving_qty": 5,
+            "nix_brand_id": "51db37b1176fe9790a898466",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 5,
+            "brand_name_item_name": "Vlasic Hamburger Stackers, Dill",
+            "food_name": "Hamburger Stackers, Dill",
+            "serving_unit": "slices",
+            "brand_name": "Vlasic",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "51d2fc58cc9bff111580e2c4",
+            "photo": {
+                "thumb": "https://nutritionix-api.s3.amazonaws.com/66570bfa0e1e2b0007ee2444.jpeg"
+            },
+            "serving_qty": 2,
+            "nix_brand_id": "51db37b9176fe9790a898b60",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 130,
+            "brand_name_item_name": "Meijer White Hamburger Buns",
+            "food_name": "White Hamburger Buns",
+            "serving_unit": "bun",
+            "brand_name": "Meijer",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "548368cf1787c90828f9ba70",
+            "photo": {
+                "thumb": "https://nutritionix-api.s3.amazonaws.com/54836b981787c90828f9bb21.jpeg"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37b0176fe9790a8983e0",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 130,
+            "brand_name_item_name": "Nature's Own Hamburger Buns, 100% Whole Wheat",
+            "food_name": "Hamburger Buns, 100% Whole Wheat",
+            "serving_unit": "bun",
+            "brand_name": "Nature's Own",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "51c3ec2e97c3e6de73cba8d2",
+            "photo": {
+                "thumb": "https://assets.syndigo.com/f3cda179-dc5c-4bbd-aadc-bb8ab6ef2ba9"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37b9176fe9790a898bf4",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 140,
+            "brand_name_item_name": "Aunt Millie's Hamburger Buns, White",
+            "food_name": "Hamburger Buns, White",
+            "serving_unit": "bun",
+            "brand_name": "Aunt Millie's",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "5564986ea08827756ddff07f",
+            "photo": {
+                "thumb": "https://assets.syndigo.com/31ff7500-8fe4-479e-a91e-a24ea86057e5"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37b9176fe9790a898bde",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 150,
+            "brand_name_item_name": "Sara Lee Hamburger Buns, White, Restaurant Style",
+            "food_name": "Hamburger Buns, White, Restaurant Style",
+            "serving_unit": "bun",
+            "brand_name": "Sara Lee",
+            "brand_type": 2,
+            "region": 1,
+            "nix_item_id": "54ed9519a8480d8359a8c810",
+            "photo": {
+                "thumb": "https://assets.syndigo.com/61bf1fb6-b938-4dc6-a4de-9e11b991a2b8"
+            },
+            "serving_qty": 1,
+            "nix_brand_id": "51db37b7176fe9790a898a66",
+            "locale": "en_US"
+        },
+        {
+            "nf_calories": 300,
+            "brand_name_item_name": "Milo's Hamburgers BLT",
+            "food_name": "BLT",
+            "serving_unit": "sandwich",
+            "brand_name": "Milo's Hamburgers",
+            "brand_type": 1,
+            "region": 1,
+            "nix_item_id": "d3ea6835ec81742378edf745",
+            "serving_qty": 1,
+            "nix_brand_id": "58c05bd9fc977da756c7a4fc",
+            "photo": {
+                "thumb": "https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png",
+                "highres": null,
+                "is_user_uploaded": false
+            },
+            "locale": "en_US"
+        }
+    ]
+}

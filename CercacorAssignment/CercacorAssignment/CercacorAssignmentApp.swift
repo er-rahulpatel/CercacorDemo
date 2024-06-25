@@ -11,7 +11,15 @@ import SwiftUI
 struct CercacorAssignmentApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                FoodItemListView(
+                    foodItemListViewModel: FoodItemListViewModel(
+                        nutritionixAPIManager: NutritionixAPIManager(
+                            nutritionixConfiguration: NutritionixConfiguration.shared,
+                            networkManager: NetworkManager.shared)
+                    )
+                )
+            }
         }
     }
 }
