@@ -30,21 +30,23 @@ class LocationManager: NSObject, LocationManagerDelegate {
     }
     
     private func handleAuthorization(completion: @escaping (Result<Void, LocationError>) -> Void) {
-        guard CLLocationManager.locationServicesEnabled() else {
-            completion(.failure(.locationServicesDisabled))
-            return
-        }
-        switch self.clLocationManager.authorizationStatus {
-        case .authorizedWhenInUse, .authorizedAlways:
-            completion(.success(()))
-        case .denied:
-            completion(.failure(.authorizationDenied))
-        case .notDetermined:
-            completion(.failure(.authorizationNotDetermined))
-        case .restricted:
-            completion(.failure(.authorizationRestricted))
-        @unknown default:
-            fatalError("Unknown error")
+        Task{
+            guard CLLocationManager.locationServicesEnabled() else {
+                completion(.failure(.locationServicesDisabled))
+                return
+            }
+            switch self.clLocationManager.authorizationStatus {
+            case .authorizedWhenInUse, .authorizedAlways:
+                completion(.success(()))
+            case .denied:
+                completion(.failure(.authorizationDenied))
+            case .notDetermined:
+                completion(.failure(.authorizationNotDetermined))
+            case .restricted:
+                completion(.failure(.authorizationRestricted))
+            @unknown default:
+                fatalError("Unknown error")
+            }
         }
     }
     
