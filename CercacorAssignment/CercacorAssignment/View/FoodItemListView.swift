@@ -13,9 +13,25 @@ struct FoodItemListView: View {
     var body: some View {
         VStack {
             if (foodItemListViewModel.showListView) {
-                FoodItemList(foodItems: foodItemListViewModel.foodItems.map{ foodItem in
-                    FoodItemDisplay(thumbnail: foodItem.photo.thumb, name: foodItem.foodName, calories: foodItem.nfCalories)
-                }, selectedIndex: $foodItemListViewModel.selectedItemIndex)
+                SegmentedPickerView(
+                    segments: [FoodItemTypes.common, FoodItemTypes.branded],
+                    selection:$foodItemListViewModel.selectedFoodType)
+                .padding(.horizontal)
+                
+                ZStack {
+                    FoodItemList(
+                        foodItems: foodItemListViewModel.searchInstantResponse.common?.map{ foodItem in
+                            FoodItemDisplay(thumbnail: foodItem.photo.thumb, name: foodItem.foodName, calories: foodItem.nfCalories)
+                        }, selectedIndex: $foodItemListViewModel.selectedItemIndex)
+                    .opacity(foodItemListViewModel.selectedFoodType == .common ? 1 : 0)
+                    
+                    FoodItemList(
+                        foodItems: foodItemListViewModel.searchInstantResponse.branded?.map{ foodItem in
+                            FoodItemDisplay(thumbnail: foodItem.photo.thumb, name: foodItem.foodName, calories: foodItem.nfCalories)
+                        }, selectedIndex: $foodItemListViewModel.selectedItemIndex)
+                    .opacity(foodItemListViewModel.selectedFoodType == .branded ? 1 : 0)
+                }
+                .frame(maxHeight: .infinity, alignment: .top)
             }
             else {
                 Text("No food items to display.")
@@ -54,11 +70,22 @@ extension FoodItemListView {
     @ViewBuilder
     func navigateToFoodItemDetaiView() -> (some View)?? {
         if let selectedItemIndex = foodItemListViewModel.selectedItemIndex {
-            FoodItemDetailView(foodItemDetailViewModel: FoodItemDetailViewModel(
-                nutritionixAPIManager: NutritionixAPIManager(
-                    nutritionixConfiguration: NutritionixConfiguration.shared,
-                    networkManager: NetworkManager.shared),
-                selectedNixItemId: foodItemListViewModel.getNixItemId(for: selectedItemIndex) ?? ""))
+            (foodItemListViewModel.selectedFoodType == .common) ?
+            FoodItemDetailView(
+                foodItemDetailViewModel:FoodItemDetailViewModel(
+                    nutritionixAPIManager: NutritionixAPIManager(
+                        nutritionixConfiguration: NutritionixConfiguration.shared,
+                        networkManager: NetworkManager.shared),
+                    selectedFoodName: foodItemListViewModel.getFoodName(for: selectedItemIndex) ?? "")
+            )
+            :
+            FoodItemDetailView(
+                foodItemDetailViewModel:FoodItemDetailViewModel(
+                    nutritionixAPIManager: NutritionixAPIManager(
+                        nutritionixConfiguration: NutritionixConfiguration.shared,
+                        networkManager: NetworkManager.shared),
+                    selectedNixItemId: foodItemListViewModel.getNixItemId(for: selectedItemIndex) ?? "")
+            )
         }
     }
 }

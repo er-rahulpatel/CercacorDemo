@@ -23,9 +23,7 @@ struct NutrientList: View {
                 
                 index < nutrients.count - 1 ? Divider() : nil
             }
-            
         }
-        
     }
 }
 

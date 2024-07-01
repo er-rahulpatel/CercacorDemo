@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BrandedFood: Codable, Equatable {
+struct BrandedFood: Codable {
     let foodName: String
     var servingUnit: String
     let nixBrandId: String
@@ -35,7 +35,9 @@ struct BrandedFood: Codable, Equatable {
         case nixItemId = "nix_item_id"
         case locale = "locale"
     }
-    
+}
+
+extension BrandedFood: Equatable {
     static func == (lhs: BrandedFood, rhs: BrandedFood) -> Bool {
         return lhs.foodName == rhs.foodName &&
         lhs.servingUnit == rhs.servingUnit &&

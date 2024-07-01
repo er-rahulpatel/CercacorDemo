@@ -10,6 +10,7 @@ import Foundation
 enum APIEndPoint {
     case searchInstant
     case searchItem
+    case naturalNutrients
     
     private var host: String {
         "trackapi.nutritionix.com"
@@ -29,6 +30,8 @@ enum APIEndPoint {
             return "/search/instant"
         case .searchItem:
             return "/search/item"
+        case .naturalNutrients:
+            return "/natural/nutrients"
         }
     }
     
@@ -55,7 +58,7 @@ enum APIEndPoint {
     }
     
     // Create URL request to fetch data
-    func urlRequest(for queryItems: [URLQueryItem], nutritionixConfiguration:NutritionixConfiguration, body: [String: AnyHashable]? = nil ) throws ->  URLRequest {
+    func urlRequest(with nutritionixConfiguration:NutritionixConfiguration, queryItems: [URLQueryItem]? = nil, body: [String: AnyHashable]? = nil ) throws ->  URLRequest {
         
         var components = self.urlComponents
         components.queryItems = queryItems
@@ -67,6 +70,8 @@ enum APIEndPoint {
         switch self {
         case .searchInstant, .searchItem:
             httpMethod = "GET"
+        default:
+            httpMethod = "POST"
         }
         request.httpMethod = httpMethod
         if let body = body{

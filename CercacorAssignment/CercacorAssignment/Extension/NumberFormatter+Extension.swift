@@ -16,6 +16,13 @@ extension Double {
         return formatter
     }()
     
+    static let decimalValueInputFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 2
+        formatter.groupingSeparator = ""
+        return formatter
+    }()
+    
     func format() -> String {
         Self.decimalValueFormatter.string(from: NSNumber(value: self)) ?? ""
     }

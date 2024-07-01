@@ -13,9 +13,33 @@ protocol PreviewIntialHandler {
     static func getPreviewInitial() -> Element
 }
 
+extension CommonFood: PreviewIntialHandler {
+    typealias Element = Self
+    static func getPreviewInitial() -> Self {
+        let json = """
+        {
+            "serving_qty": 1.5,
+            "tag_name": "Test Food",
+            "full_nutrients": [
+                {"attribute_id": 208, "value": 150}
+            ],
+            "photo": {"url": "https://example.com/image.jpg", "thumb": "https://example.com/thumb.jpg"},
+            "tag_id": "abc123",
+            "common_type": 1,
+            "food_name": "Test Food",
+            "serving_unit": "cup",
+            "locale": "en_US",
+            "nfCalories": 150
+        }
+        """.data(using: .utf8)!
+        
+        return try! JSONDecoder().decode(CommonFood.self, from: json)
+    }
+}
+
 extension BrandedFood: PreviewIntialHandler {
-    typealias Element = BrandedFood
-    static func getPreviewInitial() -> BrandedFood {
+    typealias Element = Self
+    static func getPreviewInitial() -> Self {
         BrandedFood(
             foodName: "Hamburger",
             servingUnit: "sandwich",
@@ -70,4 +94,23 @@ extension NutrientInfo: PreviewIntialHandler {
     }
 }
 
+extension SubRecipe: PreviewIntialHandler {
+    typealias Element = Self
+    static func getPreviewInitial() -> Self {
+        SubRecipe(
+            foodName: "Hamburger",
+            ndbNumber: 13424,
+            calories: 50,
+            tagId: 12,
+            recipeId: 124,
+            servingQuantity: 4,
+            servingUnit: "g")
+    }
+}
 
+extension SearchInstantEndPointResponse: PreviewIntialHandler {
+    typealias Element = Self
+    static func getPreviewInitial() -> Self {
+        SearchInstantEndPointResponse(common: [CommonFood.getPreviewInitial()], branded: [BrandedFood.getPreviewInitial()])
+    }
+}

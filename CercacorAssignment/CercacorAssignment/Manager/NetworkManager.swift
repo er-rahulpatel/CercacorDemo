@@ -14,11 +14,16 @@ protocol NetworkManagerDelegate {
 
 class NetworkManager: NetworkManagerDelegate {
     static let shared = NetworkManager()
-    let urlSession: URLSession
+    private let urlSession: URLSession
     
     private init() {
         self.urlSession = URLSession.shared
     }
+    
+    init(urlSession: URLSession) {
+        self.urlSession = urlSession
+    }
+    
     ///Common method to make a request to server
     func make(request: URLRequest) async throws -> (Data, URLResponse) {
         let response: (Data, URLResponse) = try await self.urlSession.data(for: request)

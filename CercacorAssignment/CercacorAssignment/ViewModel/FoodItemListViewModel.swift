@@ -10,7 +10,7 @@ import Combine
 
 class FoodItemListViewModel: ObservableObject {
     let nutritionixAPIManager: NutritionixAPIManagerDelegate
-    @Published var foodItems: [BrandedFood] = []
+    @Published var searchInstantResponse: SearchInstantEndPointResponse = SearchInstantEndPointResponse()
     @Published var isError: Bool = false
     var errorMessage: String = ""
     ///Nutritionix recommendation.
@@ -19,10 +19,11 @@ class FoodItemListViewModel: ObservableObject {
     private let charCount = 3 ///ref:
     private let debounceTime = 300
     @Published var selectedItemIndex: Int?
+    @Published var selectedFoodType: FoodItemTypes = .common
     @Published var searchText = "" {
         didSet {
             ///call api and manage view updates
-            showListView = searchText.count >= charCount
+            showListView = searchText.count > charCount
             if searchText.count > charCount {
                 searchCancellable?.cancel()
                 searchCancellable = $searchText
@@ -41,7 +42,7 @@ class FoodItemListViewModel: ObservableObject {
     @Published var showListView: Bool = false {
         didSet {
             if searchText.count > charCount {
-                self.foodItems = []
+                self.searchInstantResponse = SearchInstantEndPointResponse()
             }
         }
     }
@@ -51,15 +52,22 @@ class FoodItemListViewModel: ObservableObject {
     }
     /// Fetch Instant Food Item response
     /// Excluding common food items because it does not contain calorie information and has different end point to fetch detail information
-    func searchInstantFoodItem(for foodItem: String, includeCommonFoodItem: Bool = false ) {
+    func searchInstantFoodItem(for foodItem: String,
+                               foodTypes:[FoodItemTypes] = [.common,.branded],
+                               includeDetail: Bool = true ) {
         Task {
             do {
-                let response: SearchInstantEndPointResponse = try await nutritionixAPIManager.getFoodItemsByInstantSearch(query: foodItem, includeCommonFoodItem: includeCommonFoodItem)
+                let response: SearchInstantEndPointResponse = try await nutritionixAPIManager.searchInstantFoodItemsWith(
+                    parameters: SearchInstantEndPointParameter(
+                        query: foodItem,
+                        common: foodTypes.contains(.common),
+                        branded: foodTypes.contains(.branded),
+                        detailed: includeDetail))
                 DispatchQueue.main.async {[weak self] in
                     guard let weakSelf = self else {
                         return
                     }
-                    weakSelf.foodItems = response.branded ?? []
+                    weakSelf.searchInstantResponse = response
                 }
             } catch {
                 DispatchQueue.main.async {[weak self] in
@@ -70,6 +78,11 @@ class FoodItemListViewModel: ObservableObject {
                 }
             }
         }
+        
+        //        let filePath = Bundle.main.path(forResource: "SearchInstantMock", ofType: "json")!
+        //        let fileUrl  = URL(fileURLWithPath: filePath)
+        //        let data = try! Data(contentsOf: fileUrl)
+        //        self.searchInstantResponse = try! JSONDecoder().decode(SearchInstantEndPointResponse.self, from: data)
     }
     
     /// API response error handling
@@ -84,8 +97,14 @@ class FoodItemListViewModel: ObservableObject {
     
     ///Get nixItemId for selected row
     func getNixItemId(for index: Int) -> String? {
-        guard index < foodItems.count else { return nil }
-        return foodItems[index].nixItemId
+        guard let branded = searchInstantResponse.branded, index < branded.count else { return nil }
+        return branded[index].nixItemId
+    }
+    
+    ///Get food name for selected row
+    func getFoodName(for index: Int) -> String? {
+        guard let common = searchInstantResponse.common, index < common.count else { return nil }
+        return common[index].foodName
     }
     
 }

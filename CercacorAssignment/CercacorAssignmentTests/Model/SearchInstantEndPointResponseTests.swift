@@ -20,27 +20,9 @@ final class SearchInstantEndPointResponseTests: XCTestCase {
     
     func testEncodingDecoding() throws {
         // Given
-        let commonFood = CommonFood(servingQuantity: 1.5,
-                                    tagName: "Apple",
-                                    photo: nil,
-                                    tagId: "123",
-                                    commonType: 1,
-                                    foodName: "Apple",
-                                    servingUnit: "piece",
-                                    locale: "en_US")
+        let commonFood = CommonFood.getPreviewInitial()
         
-        let brandedFood = BrandedFood(foodName: "Yogurt",
-                                      servingUnit: "cup",
-                                      nixBrandId: "456",
-                                      brandNameItemName: "Chobani Yogurt",
-                                      servingQuantity: 1.0,
-                                      nfCalories: 150.0,
-                                      photo: FoodItemThumbnail(thumb: ""),
-                                      brandName: "Chobani",
-                                      region: 1,
-                                      brandType: 2,
-                                      nixItemId: "789",
-                                      locale: "en_US")
+        let brandedFood = BrandedFood.getPreviewInitial()
         
         let response = SearchInstantEndPointResponse(common: [commonFood], branded: [brandedFood])
         
@@ -51,8 +33,8 @@ final class SearchInstantEndPointResponseTests: XCTestCase {
         // Then
         XCTAssertEqual(decoded.common?.count, 1)
         XCTAssertEqual(decoded.branded?.count, 1)
-        XCTAssertEqual(decoded.common?.first?.foodName, "Apple")
-        XCTAssertEqual(decoded.branded?.first?.foodName, "Yogurt")
+        XCTAssertEqual(decoded.common?.first?.foodName, "Test Food")
+        XCTAssertEqual(decoded.branded?.first?.foodName, "Hamburger")
     }
     
     func testEncodingWithNilArrays() throws {

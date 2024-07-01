@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
+import IQKeyboardManagerSwift
 
 @main
 struct CercacorAssignmentApp: App {
+    init() {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.resignOnTouchOutside = true
+    }
     var body: some Scene {
         WindowGroup {
             NavigationView {

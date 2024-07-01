@@ -19,6 +19,11 @@ struct FoodItemDetailView: View {
                         photo: food.photo?.thumb,
                         brandName: food.brandName)
                     
+                    if let subRecipe = food.subRecipes, !subRecipe.isEmpty {
+                        SubRecipeDetailView(foodItemDetailViewModel: foodItemDetailViewModel)
+                            .padding()
+                            .border(.primary)
+                    }
                     NutritionDetailView(foodItemDetailViewModel: foodItemDetailViewModel)
                         .padding()
                         .border(.primary)
@@ -32,6 +37,19 @@ struct FoodItemDetailView: View {
         /// To solve scrollview's top  padding
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Details")
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                NavigationLink(destination: RestaurantView(
+                    restaurantViewModel: RestaurantViewModel(
+                        locationManager: LocationManager.shared,
+                        foodName: foodItemDetailViewModel.food?.foodName ?? ""
+                    )
+                )) {
+                    Text("\(Image(systemName: "fork.knife.circle"))Nearby Restaurants")
+                }
+                .isDetailLink(false)
+            }
+        }
         .alert(foodItemDetailViewModel.errorMessage,
                isPresented: $foodItemDetailViewModel.isError,
                actions: {

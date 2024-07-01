@@ -26,9 +26,9 @@ final class NutritionixAPIManagerTests: XCTestCase {
         self.networkManagerMock = nil
     }
     
-    func testGetFoodItemsByInstantSearch_Success() {
+    func testSearchInstantFoodItems_Success() {
         // Arrange
-        let query = "Bun"
+        let parameters = SearchInstantEndPointParameter(query: "Bun", common: true, branded: true, detailed: true)
         let expectedDataResponse = SearchInstantEndPointResponseMock.successDataResponse
         let expectedResponse = SearchInstantEndPointResponseMock.successResponse
         
@@ -40,7 +40,7 @@ final class NutritionixAPIManagerTests: XCTestCase {
         
         Task {
             do {
-                let response: SearchInstantEndPointResponse = try await self.nutritionixAPIManager_SUT.getFoodItemsByInstantSearch(query: query)
+                let response: SearchInstantEndPointResponse = try await self.nutritionixAPIManager_SUT.searchInstantFoodItemsWith(parameters: parameters)
                 
                 XCTAssertEqual(response.branded?.count, expectedResponse.branded?.count)
                 expectation.fulfill()
@@ -52,9 +52,9 @@ final class NutritionixAPIManagerTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0) // Adjust timeout as necessary
     }
     
-    func testGetFoodItemsByNixId_Success() {
+    func testSearchItemForBrandedFood_Success() {
         // Arrange
-        let nixId = "12345"
+        let parameters = SearchItemEndPointParameter(nix_item_id: "12345")
         let expectedDataResponse = SearchItemEndPointResponseMock.successDataResponse
         let expectedResponse = SearchItemEndPointResponseMock.successResponse // Define your mock data
         
@@ -66,7 +66,7 @@ final class NutritionixAPIManagerTests: XCTestCase {
         
         Task {
             do {
-                let response: SearchItemEndPointResponse = try await self.nutritionixAPIManager_SUT.getFoodItemsByNixId(nixId)
+                let response: SearchItemEndPointResponse = try await self.nutritionixAPIManager_SUT.searchItemForBrandedFoodWith(parameters: parameters)
                 
                 XCTAssertEqual(response.foods.count, expectedResponse.foods.count)
                 expectation.fulfill()

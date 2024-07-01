@@ -13,20 +13,23 @@ struct FoodDetailHeader: View {
     let brandName: String?
     
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             FoodItemImage(url: photo ?? "")
                 .frame(width: 50, height: 50)
                 .clipShape(RoundedRectangle(cornerRadius: 4))
+                .shadow(radius: 2)
             
             VStack {
-                Text(name)
+                Text(name.capitalized)
                     .font(.title3)
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(brandName ?? "")
-                    .fixedSize(horizontal: false, vertical: true)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                if let brandName = brandName {
+                    Text(brandName)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
         }
     }

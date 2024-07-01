@@ -25,9 +25,10 @@ struct FoodItemRow: View {
             FoodItemImage(url: foodItem.thumbnail)
                 .frame(width: 50, height: 50)
                 .clipShape(RoundedRectangle(cornerRadius: 4))
+                .shadow(radius: 2)
             
             VStack {
-                Text(foodItem.name)
+                Text(foodItem.name.capitalized)
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -36,6 +37,7 @@ struct FoodItemRow: View {
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
+            Image(systemName: "chevron.right")
         }
     }
 }

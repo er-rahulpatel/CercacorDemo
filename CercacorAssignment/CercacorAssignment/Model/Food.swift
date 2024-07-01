@@ -31,12 +31,12 @@ struct Food: Codable {
     let nixBrandName: String?
     let nixBrandId: String?
     let nixItemName: String?
-    let nixItemId: String
+    let nixItemId: String?
     let source: Int?
     let altMeasures: [FoodItemMeasure]?
     let photo: FoodItemThumbnail?
+    let subRecipes: [SubRecipe]?
     let ingredients: String?
-    
     
     enum CodingKeys : String, CodingKey {
         case foodName = "food_name"
@@ -66,6 +66,7 @@ struct Food: Codable {
         case source
         case altMeasures = "alt_measures"
         case photo
+        case subRecipes = "sub_recipe"
         case ingredients = "nf_ingredient_statement"
     }
 }
@@ -84,7 +85,30 @@ struct FoodItemMeasure: Codable {
     }
 }
 
-struct FullNutrient: Codable {
+struct SubRecipe: Codable {
+    var servingWeight: Double?
+    let foodName: String
+    let ndbNumber: Int
+    var calories: Double
+    let tagId: Int
+    let recipeId: Int
+    var servingQuantity: Double
+    let servingUnit: String?
+    var foodDetail: Food?
+    
+    enum CodingKeys: String, CodingKey {
+        case servingWeight = "serving_weight"
+        case foodName = "food"
+        case ndbNumber = "ndb_number"
+        case calories
+        case tagId = "tag_id"
+        case recipeId = "recipe_id"
+        case servingQuantity = "serving_qty"
+        case servingUnit = "serving_unit"
+    }
+}
+
+struct FullNutrient: Codable, Equatable {
     let attributeId: Int
     let amount: Double
     
@@ -111,11 +135,4 @@ struct NutrientInfo {
     var amount: Double
     let name: String
     let unit: String
-    
-    /// Update nutrient amount in current nutrient information
-    func updateAmount(_ amount: Double) -> Self {
-        var nutrientInfo = self
-        nutrientInfo.amount = amount
-        return nutrientInfo
-    }
 }

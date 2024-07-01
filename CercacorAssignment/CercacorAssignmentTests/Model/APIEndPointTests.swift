@@ -27,7 +27,7 @@ final class APIEndPointTests: XCTestCase {
         
         // When
         do {
-            let request = try endPoint.urlRequest(for: queryItems, nutritionixConfiguration: configuration, body: body)
+            let request = try endPoint.urlRequest(with: configuration, queryItems: queryItems, body: body)
             
             // Then
             XCTAssertEqual(request.httpMethod, "GET")

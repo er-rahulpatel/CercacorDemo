@@ -15,6 +15,7 @@ struct FoodItemImage: View {
         WebImage(url: URL(string: url))
             .resizable()
             .scaledToFill()
+            .aspectRatio(contentMode: .fit)
     }
 }
 

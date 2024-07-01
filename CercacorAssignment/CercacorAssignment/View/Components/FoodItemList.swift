@@ -14,16 +14,18 @@ struct FoodItemDisplay {
 }
 
 struct FoodItemList: View {
-    let foodItems: [FoodItemDisplay]
+    let foodItems: [FoodItemDisplay]?
     @Binding var selectedIndex: Int?
     
     var body: some View {
         VStack {
-            List(foodItems.enumerated().map{ $0 }, id: \.offset) { index, foodItem in
-                FoodItemRow(foodItem: foodItem)
-                    .onTapGesture {
-                        selectedIndex = index
-                    }
+            if let foodItems = self.foodItems{
+                List(foodItems.enumerated().map{ $0 }, id: \.offset) { index, foodItem in
+                    FoodItemRow(foodItem: foodItem)
+                        .onTapGesture {
+                            selectedIndex = index
+                        }
+                }
             }
         }
     }

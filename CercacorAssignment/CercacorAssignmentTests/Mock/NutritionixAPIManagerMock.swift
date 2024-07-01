@@ -16,28 +16,37 @@ protocol MockResponseProvider {
 }
 
 class NutritionixAPIManagerMock: NutritionixAPIManagerDelegate {
+    func searchInstantFoodItemsWith<Item>(parameters: SearchInstantEndPointParameter) async throws -> Item where Item : Decodable {
+        switch mockResponse {
+        case .success(let response):
+            return response as! Item
+        case .failure(let error):
+            throw error
+        }
+    }
+    
+    func searchItemForBrandedFoodWith<Item>(parameters: SearchItemEndPointParameter) async throws -> Item where Item : Decodable {
+        switch mockResponse {
+        case .success(let response):
+            return response as! Item
+        case .failure(let error):
+            throw error
+        }
+    }
+    
+    func naturalNutrientForCommonFoodWith<Item>(parameters: NaturalNutrientsEndPointParameter) async throws -> Item where Item : Decodable {
+        switch mockResponse {
+        case .success(let response):
+            return response as! Item
+        case .failure(let error):
+            throw error
+        }
+    }
+    
     var mockResponse: Result<Any, Error>
     
     init(mockResponse: Result<Any, Error>) {
         self.mockResponse = mockResponse
-    }
-    
-    func getFoodItemsByInstantSearch<Item: Decodable>(query: String, includeCommonFoodItem: Bool = false) async throws -> Item {
-        switch mockResponse {
-        case .success(let response):
-            return response as! Item
-        case .failure(let error):
-            throw error
-        }
-    }
-    
-    func getFoodItemsByNixId<Item: Decodable>(_ nixId: String) async throws -> Item {
-        switch mockResponse {
-        case .success(let response):
-            return response as! Item
-        case .failure(let error):
-            throw error
-        }
     }
 }
 

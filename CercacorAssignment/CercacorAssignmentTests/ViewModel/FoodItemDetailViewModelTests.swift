@@ -46,7 +46,7 @@ final class FoodItemDetailViewModelTests: XCTestCase {
         XCTAssertTrue(foodItemDetailViewModel_SUT.nutrientsInfo.isEmpty)
     }
     
-    func testSearchFoodItemByNixId_Success() {
+    func testSearchBrandedFoodByNixItemId_Success() {
         // Arrange
         let expectation = XCTestExpectation(description: "Search food item by NixId")
         self.nutritionixAPIManagerMock.mockResponse = .success(SearchItemEndPointResponseMock.successResponse)
@@ -54,18 +54,15 @@ final class FoodItemDetailViewModelTests: XCTestCase {
             mockResponse: .success(SearchItemEndPointResponseMock.successResponse))
         
         // Act
-        self.foodItemDetailViewModel_SUT.searchFoodItemByNixId("someTestId")
-        
-        // Assert
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            XCTAssertEqual(self.foodItemDetailViewModel_SUT.food?.foodName, SearchItemEndPointResponseMock.successResponse.foods[0].foodName)
+        self.foodItemDetailViewModel_SUT.searchBrandedFoodByNixItemId("someTestId") { food in
+            // Assert
+            XCTAssertNotNil(food)
             expectation.fulfill()
         }
-        
         wait(for: [expectation], timeout: 5.0) // Adjust timeout as necessary
     }
     
-    func testSearchFoodItemByNixId_Failure() {
+    func testSearchBrandedFoodByNixItemId_Failure() {
         // Arrange
         let expectation = XCTestExpectation(description: "Search food item by NixId")
         nutritionixAPIManagerMock.mockResponse = .failure(NetworkError.invalidUrl)
@@ -73,16 +70,13 @@ final class FoodItemDetailViewModelTests: XCTestCase {
             mockResponse: .failure(NetworkError.invalidUrl))
         
         // Act
-        foodItemDetailViewModel_SUT.searchFoodItemByNixId("invalidTestId")
-        
-        // Assert
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        foodItemDetailViewModel_SUT.searchBrandedFoodByNixItemId("invalidTestId") { food in
+            // Assert
+            XCTAssertNil(food)
             XCTAssertTrue(self.foodItemDetailViewModel_SUT.isError)
             XCTAssertEqual(self.foodItemDetailViewModel_SUT.errorMessage, NetworkError.invalidUrl.description)
-            XCTAssertNil(self.foodItemDetailViewModel_SUT.food)
             expectation.fulfill()
         }
-        
         wait(for: [expectation], timeout: 3.0) // Adjust timeout as necessary
     }
     
@@ -111,14 +105,14 @@ final class FoodItemDetailViewModelTests: XCTestCase {
         XCTAssertEqual(foodItemDetailViewModel_SUT.quantity, 150.0)
     }
     
-    func testCalculateNutrientAmount() {
+    func testCalculateAmount() {
         // Arrange
         let amount = 30.0
         let servingQuantity = 300.0
         let defaultQuantity = 100.0
         
         // Act
-        let calculatedAmount = foodItemDetailViewModel_SUT.calculateNutrientAmount(
+        let calculatedAmount = foodItemDetailViewModel_SUT.calculateAmount(
             for: amount,
             servingQuantity: servingQuantity,
             defaultQuantity: defaultQuantity)

@@ -21,31 +21,27 @@ struct NutritionDetailView: View {
                 Divider()
                     .overlay(.primary)
                 
+                Text("Serving size")
+                    .bold()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
                 ///Quantity input text field with stepper
                 QuantityInputView(
                     quantity: $foodItemDetailViewModel.quantity,
                     servingUnit: food.servingUnit,
-                    servingWeightGrams: food.servingWeightGrams,
+                    servingWeightGrams: foodItemDetailViewModel.getTotalWeightGrams(for:food),
                     metricUOM: food.metricUOM)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 ThickDivider()
                 
                 ///Displays total calories
-                CalorieView(calories: foodItemDetailViewModel.calculateNutrientAmount(
-                    for: food.calories,
-                    servingQuantity: foodItemDetailViewModel.quantity,
-                    defaultQuantity: food.servingQuantity))
+                CalorieView(calories: foodItemDetailViewModel.getTotalCalories(for: food))
                 
                 ThickDivider()
                 
                 ///Displays all nutrient information
-                NutrientList(
-                    nutrients: foodItemDetailViewModel.nutrientsInfo.map { $0.updateAmount(foodItemDetailViewModel.calculateNutrientAmount(
-                        for: $0.amount,
-                        servingQuantity: foodItemDetailViewModel.quantity,
-                        defaultQuantity: food.servingQuantity))
-                    })
+                NutrientList(nutrients: foodItemDetailViewModel.nutrientsInfo)
                 
                 ThickDivider()
                 

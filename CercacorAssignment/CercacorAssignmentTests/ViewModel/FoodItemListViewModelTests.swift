@@ -29,7 +29,7 @@ final class FoodItemListViewModelTests: XCTestCase {
     
     func testInitialization() {
         XCTAssertNotNil(foodItemListViewModel_SUT.nutritionixAPIManager)
-        XCTAssertTrue(foodItemListViewModel_SUT.foodItems.isEmpty)
+        XCTAssertNotNil(foodItemListViewModel_SUT.searchInstantResponse)
         XCTAssertFalse(foodItemListViewModel_SUT.isError)
         XCTAssertEqual(foodItemListViewModel_SUT.errorMessage, "")
         XCTAssertNil(foodItemListViewModel_SUT.selectedItemIndex)
@@ -57,7 +57,7 @@ final class FoodItemListViewModelTests: XCTestCase {
         
         // Assert
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            XCTAssertEqual(self.foodItemListViewModel_SUT.foodItems.count, SearchInstantEndPointResponseMock.successResponse.branded?.count ?? 0)
+            XCTAssertEqual(self.foodItemListViewModel_SUT.searchInstantResponse.branded?.count, SearchInstantEndPointResponseMock.successResponse.branded?.count ?? 0)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 3.0) // Adjust timeout as necessary
@@ -90,8 +90,8 @@ final class FoodItemListViewModelTests: XCTestCase {
     }
     
     func testGetNixItemId_ValidIndex() throws {
-        let mockItem = BrandedFood.getPreviewInitial()
-        foodItemListViewModel_SUT.foodItems = [mockItem]
+        let mockItem = SearchInstantEndPointResponse.getPreviewInitial()
+        foodItemListViewModel_SUT.searchInstantResponse = mockItem
         
         XCTAssertEqual(foodItemListViewModel_SUT.getNixItemId(for: 0), BrandedFood.getPreviewInitial().nixItemId)
     }
@@ -106,7 +106,7 @@ final class FoodItemListViewModelTests: XCTestCase {
     }
     
     func testSearchText_CharCountExact() throws {
-        foodItemListViewModel_SUT.searchText = "abc"
+        foodItemListViewModel_SUT.searchText = "abcd"
         XCTAssertTrue(foodItemListViewModel_SUT.showListView)
     }
     
