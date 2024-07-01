@@ -9,6 +9,7 @@ This project successfully integrates the Nutritionix API into an iOS app, provid
     
     -   Users can search for foods by name using the Nutritionix API.
     -   Display search results with food images, names, and calorie information.
+    -   Display common and branded food in separate list. 
     
 -   **Food Detail View**
     
@@ -19,14 +20,23 @@ This project successfully integrates the Nutritionix API into an iOS app, provid
        
 -   **Dynamic Nutrition Calculation**
     
-    -   Allow users to change the quantity of serving size.
-    -   Automatically recalculate nutrition information based on the adjusted quantities.
+    -   Allow users to change the quantity of food's serving size.
+    -   Allow users to change the quantity of ingredients's serving size.
+    -   Automatically recalculate nutrition information of food based on the adjusted quantities.
+ 
+-   **Restaurant View**
+    
+    -   Displays nearby restaurants on basis of food name and user's current location.
+    -   Users can see results in map or list view.
+    -   Utilize Apple's native MapKit API to find restaurants.
+    -   Dynamically handle common and branded food details with modular ui components.
   
 -   **UI Design for iOS**
     
     -   Designed screens including:
         -   Food search results screen.
         -   Detailed view of selected food item including ingredients and nutrition.
+        -   Reastaurant screen with map and list viewing option.
 
 ## Implementation Details
 
@@ -36,26 +46,20 @@ This project successfully integrates the Nutritionix API into an iOS app, provid
 -   **Target iOS Version:** iOS 15+
 -   **Programming Language:** Swift, SwiftUI
 -   **Design Pattern:** MVVM
-- 
 
 ## User Interface Screenshots
 
 ### Light Mode
 <img src="Screenshots/Light01.png" width="180" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="Screenshots/Light02.png" width="180" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="Screenshots/Light03.png" width="180" title=""><br><br><br>
-  <img src="Screenshots/Light04.png" width="180" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="Screenshots/Light03.png" width="180" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="Screenshots/Light04.png" width="180" title=""><br><br><br>
   <img src="Screenshots/Light05.png" width="180" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-### Dark Mode
-<img src="Screenshots/Dark01.png" width="180" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="Screenshots/Dark02.png" width="180" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="Screenshots/Dark03.png" width="180" title=""><br><br><br>
-  <img src="Screenshots/Dark04.png" width="180" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="Screenshots/Dark05.png" width="180" title="">
-
-
-
+  <img src="Screenshots/Light06.png" width="180" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="Screenshots/Light07.png" width="180" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="Screenshots/Light08.png" width="180" title=""><br><br><br>
+  <img src="Screenshots/Light09.png" width="180" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="Screenshots/Light10.png" width="180" title="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ## Additional Notes
 
@@ -69,15 +73,17 @@ This project successfully integrates the Nutritionix API into an iOS app, provid
     
 -   **Dependency Injection:** Implemented protocols to ensure a flexible and maintainable codebase, facilitating easier testing and future updates.
 
-- **Direct Commit to `main` branch:** Code was committed directly to the main branch due to being the sole developer, eliminating the need for a Git workflow initially. 
+-   **Direct Commit to `main` branch:** Code was committed directly to the main branch due to being the sole developer, eliminating the need for a Git workflow initially. 
 
 ## Future Enhancements
 
 -   **NetworkReachabilityManager:** Implement to handle network connection status and provide appropriate feedback to users.
 
-- **Offline Use:** Implement offline support to allow users to access previously viewed food information and perform searches without an active internet connection. 
+-   **Measurement Conversion:** Implement measure conversion (e.g. tbsp to tsp, cup to grams etc) for accurate calculation.  
+
+-   **Offline Use:** Implement offline support to allow users to access previously viewed food information and perform searches without an active internet connection. 
     
--   **Nearby Restaurants:** Integrate functionality to display nearby restaurants offering selected foods in either a list or map view.
+-   **Nearby Restaurants:** Integrate functionality to display nearby restaurants using Google Maps offering selected foods.
     
 -   **Accessibility Improvements:** Enhance accessibility features to improve usability for all users.
     
