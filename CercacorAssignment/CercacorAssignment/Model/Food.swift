@@ -27,7 +27,7 @@ struct Food: Codable {
     let sugars: Double?
     let protein: Double?
     let potassium: Double?
-    let fullNutrients: [FullNutrient]?
+    var fullNutrients: [FullNutrient]?
     let nixBrandName: String?
     let nixBrandId: String?
     let nixItemName: String?
@@ -106,11 +106,39 @@ struct SubRecipe: Codable {
         case servingQuantity = "serving_qty"
         case servingUnit = "serving_unit"
     }
+    
+    private func findMatchingMeasure() -> FoodItemMeasure? {
+        return self.foodDetail?.altMeasures?.first(where: {
+            (self.servingUnit == $0.measure) ||
+            Measures.getInstanceByAbbreviation(self.servingUnit ?? "") ==  Measures.getInstanceByAbbreviation($0.measure)
+        })
+    }
+    
+    private func scaleFactorForMatchingMeasure () -> Double? {
+        if let foodMeasure = self.findMatchingMeasure(),
+           let foodDetail = self.foodDetail {
+            return ((foodMeasure.servingWeight ?? 0) / foodMeasure.quantity) / ((foodDetail.servingWeightGrams ?? 1) / foodDetail.servingQuantity)
+        }
+        return nil
+    }
+    
+    func adjustSubRecipeNutrientsWithServingUnit() -> SubRecipe {
+        
+        guard let subRecipeFoodDetail = self.foodDetail,
+              let subRecipeServingUnit = self.servingUnit,
+              let scaleFactor = self.scaleFactorForMatchingMeasure(),
+              Measures.getInstanceByAbbreviation(subRecipeServingUnit) != Measures.getInstanceByAbbreviation(subRecipeFoodDetail.servingUnit)
+        else { return self }
+        
+        var updatedSubRecipe = self
+        updatedSubRecipe.foodDetail?.fullNutrients?.updateEach {  $0.amount *= scaleFactor }
+        return updatedSubRecipe
+    }
 }
 
 struct FullNutrient: Codable, Equatable {
     let attributeId: Int
-    let amount: Double
+    var amount: Double
     
     enum CodingKeys : String, CodingKey {
         case attributeId = "attr_id"
@@ -135,4 +163,65 @@ struct NutrientInfo {
     var amount: Double
     let name: String
     let unit: String
+}
+
+enum Measures: CaseIterable {
+    case grams, milligrams, ounces, pounds, fluidOunces, teaspoons, tablespoons, quarts, cups, liters, milliliters
+    
+    var abbreviation: String{
+        switch self {
+        case .grams:
+            return "g"
+        case .milligrams:
+            return "mg"
+        case .ounces:
+            return "oz"
+        case .pounds:
+            return "lb"
+        case .fluidOunces:
+            return "fl oz"
+        case .teaspoons:
+            return "tsp"
+        case .tablespoons:
+            return "tbsp"
+        case .quarts:
+            return "quart"
+        case .cups:
+            return "cup"
+        case .liters:
+            return "L"
+        case .milliliters:
+            return "mL"
+        }
+    }
+    static func getInstanceByAbbreviation(_ abbreviation: String) -> Measures?{
+        let formattedArgument = abbreviation.components(separatedBy: .punctuationCharacters).joined().filter{!$0.isWhitespace}.lowercased()
+        return Measures.allCases.first(where: {$0.validAbbreviationsformatted.contains( formattedArgument)})
+    }
+    var validAbbreviationsformatted: [String]{
+        var result: [String]
+        switch self {
+        case .grams:
+            result = ["g", "gram", "grams"]
+        case .ounces:
+            result = ["oz", "wt. oz"]
+        case .fluidOunces:
+            return ["fluid ounces", "fl oz", "fluid ozunce", "fluid oz", "fl ounce", "fl ounces"]
+        case .teaspoons:
+            return ["tsp","tsps","teaspoon","teaspoons"]
+        case .tablespoons:
+            return ["tbsp", "tbsps", "tablespoon", "tablespoons"]
+        case .quarts:
+            return ["quart", "quarts", "qt", "qts"]
+        case .cups:
+            return ["cup", "cups", "c"]
+        case .liters:
+            return ["l", "liter", "liters", "litre", "litres"]
+        case .milliliters:
+            return ["ml", "milliliter", "milliliters"]
+        default:
+            result = [self.abbreviation]
+        }
+        return result.map{$0.components(separatedBy: .punctuationCharacters).joined().filter{!$0.isWhitespace}.lowercased()}
+    }
 }

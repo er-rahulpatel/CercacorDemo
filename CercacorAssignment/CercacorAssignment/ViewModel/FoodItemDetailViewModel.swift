@@ -15,7 +15,7 @@ class FoodItemDetailViewModel: ObservableObject {
         didSet {
             setQuantity(food?.servingQuantity ?? 0)
             mapNutrientInformation()
-            scaleSubRecipesByServingWeight()
+            adjustSubRecipesByFoodTotalServingWeight()
         }
     }
     @Published var selectedNixItemId: String? {
@@ -38,13 +38,13 @@ class FoodItemDetailViewModel: ObservableObject {
     }
     @Published var quantity: Double = 0 {
         didSet {
-            updateNutrientInformation()
+            updateFoodNutrientInformation()
         }
     }
     @Published var nutrientsInfo: [NutrientInfo] = []
     @Published var subRecipes: [SubRecipe] = [] {
         didSet {
-            updateNutrientInformation()
+            updateFoodNutrientInformation()
         }
     }
     /// Nutrients name and unit mapping
@@ -160,7 +160,7 @@ class FoodItemDetailViewModel: ObservableObject {
         }
     }
     
-    func updateNutrientInformation() {
+    func updateFoodNutrientInformation() {
         guard let food = self.food,
               let fullNutrients = food.fullNutrients else { return }
         
@@ -193,7 +193,7 @@ class FoodItemDetailViewModel: ObservableObject {
         }
     }
     /// Scale sub-recipes because for some food record, all ingredients total serving weight miss-match with food's serving weight
-    func scaleSubRecipesByServingWeight() {
+    func adjustSubRecipesByFoodTotalServingWeight() {
         guard let subRecipes = self.food?.subRecipes,
               let servingWeightGrams = self.food?.servingWeightGrams else { return }
         
@@ -220,7 +220,7 @@ class FoodItemDetailViewModel: ObservableObject {
             searchNaturalNutrientsForCommonFood(subRecipe.foodName) { food in
                 var updatedSubRecipe = subRecipe
                 updatedSubRecipe.foodDetail = food
-                updatedSubRecipes[index] = updatedSubRecipe
+                updatedSubRecipes[index] = updatedSubRecipe.adjustSubRecipeNutrientsWithServingUnit()
                 
                 group.leave() // Notify the group that we are leaving
             }
